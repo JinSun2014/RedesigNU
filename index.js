@@ -84,7 +84,8 @@ function showCourses(course_list){
 					<p>" + course_list[i]['catalog_num'] + "</p>	\
 					<div class='ui ribbon label'>Instructor</div>	\
 					<p>" + course_list[i]['instructor']['name'] + "</p>	\
-					<div class='ui hover green button' style='float:right; margin-bottom:10px;''>Add Cart</div>	\
+					<div class='ui hover green button' style='float:right; margin-bottom:10px;'	\
+					onclick='addCart(\"" + getName(course_list[i]) + "\")'>Add Cart</div>	\
 				</div>	\
 			</div>")
 	}
@@ -137,4 +138,8 @@ function getCourses() {
  			alert("Error getting data!")
  		}
 	});
+}
+
+function addCart(courseList){
+	alert(courseList);
 }
