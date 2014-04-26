@@ -93,6 +93,23 @@
 	<i class="inverted search icon" ></i>
 </div>
 <br>
+<div  id = "class_list" style = "display:none">
+	<div  class="ui accordion" style = "position:absolute;margin-left:300px;width:780px;">
+		<div class="title">
+			<i class="dropdown icon" ></i>
+			EECS333 Communication Network	</div>
+			<div class="hidden content">
+				<div>
+					<div class="ui ribbon label">Dogs</div>
+					<p>Dog is people's best friend!</p>
+					<div class="ui ribbon label">Dogs</div>
+					<p>Dog is people's best friend!</p>
+					<div class="ui hover green button" style="float:right; margin-bottom:10px;">Add Cart</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="ui accordion" style = "margin-left:300px;width:780px;">
 	<div class="title">
 		<i class="dropdown icon" ></i>
@@ -109,11 +126,14 @@
 $('document').ready(function(){
 	$('.ui.accordion').accordion();	
 	$('.numbers').append('shopping cart 2');
+	$('input').keypress(function(e){
+		$('#class_list').css({"display": "block"});
+		if (!$('input').val()){
+			$('#class_list').css({"display": "None"});
+		}
+	});
 
-})
-	$('.numbers').click(){
-		open.
-	}
+});
  function shopcart(){
  	$(".menu").append('<div class="list-group-item room-row container-fluid" id="' + spaceID + '">' +
     '<span class="col-sm-2 room-row-labels">Name: <span class="room-row-content">' + name + '</span> </span>' + 
