@@ -28,7 +28,7 @@
 
 <style>
 	.ui.icon.input {
-		margin-top: 50px;
+		margin-top: 10px;
 		margin-left: 300px;
 	}
 	.ui.icon.input > input {
@@ -50,11 +50,34 @@
 	<div class="right menu">
 		<div class="ui simple dropdown item">
 				Hello,Peicong
-			<i class="cart icon"></i>Shopping Cart
+			<i class="cart icon"></i>
+			<span class = "numbers">Shopping Cart
+			</span>
 			<div class="menu">
-				<a class="item">English</a>
-				<a class="item">Russian</a>
-				<a class="item">Spanish</a>
+				<table class="ui table segment">
+  <thead>
+    <tr><th>Name</th>
+    <th>Status</th>
+    <th>Notes</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>John</td>
+      <td>Approved</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Jamie</td>
+      <td>Approved</td>
+      <td>Requires call</td>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Denied</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
 			</div>
 		</div>
 		<div class = "item">
@@ -62,7 +85,7 @@
 		</div>
 	</div>
 </div>
-<div class = "ui huge header" style="margin-left:550px; margin-top:100px;">
+<div class = "ui huge header" style="margin-left:550px; margin-top:10px;">
 	COURSE SEARCH
 </div>
 <div class="ui icon input">
@@ -70,15 +93,57 @@
 	<i class="inverted search icon" ></i>
 </div>
 <br>
-<div class="ui move down reveal">
-  <a class="visible content" >
-  	Advanced Search
-  </a>
-  <a class="hidden content">
-  	sklad
-  </a>
+<div  id = "class_list" style = "display:none">
+	<div  class="ui accordion" style = "position:absolute;margin-left:300px;width:780px;">
+		<div class="title">
+			<i class="dropdown icon" ></i>
+			EECS333 Communication Network	</div>
+			<div class="hidden content">
+				<div>
+					<div class="ui ribbon label">Dogs</div>
+					<p>Dog is people's best friend!</p>
+					<div class="ui ribbon label">Dogs</div>
+					<p>Dog is people's best friend!</p>
+					<div class="ui hover green button" style="float:right; margin-bottom:10px;">Add Cart</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="ui accordion" style = "margin-left:300px;width:780px;">
+	<div class="title">
+		<i class="dropdown icon" ></i>
+		Advanced Search	</div>
+	<div class="hidden content">
+		<p></p>
+	</div>
 </div>
 
+
+
+
+<script>
+$('document').ready(function(){
+	$('.ui.accordion').accordion();	
+	$('.numbers').append('shopping cart 2');
+	$('input').keypress(function(e){
+		$('#class_list').css({"display": "block"});
+		if (!$('input').val()){
+			$('#class_list').css({"display": "None"});
+		}
+	});
+
+});
+ function shopcart(){
+ 	$(".menu").append('<div class="list-group-item room-row container-fluid" id="' + spaceID + '">' +
+    '<span class="col-sm-2 room-row-labels">Name: <span class="room-row-content">' + name + '</span> </span>' + 
+    '<span class="col-sm-2 room-row-labels">Size: <span class="room-row-content">' + maxCapacity + '</span> </span>' + 
+    '<span class="col-sm-2 room-row-labels">Building: <span class="room-row-content">' + location + '</span> </span>' +
+    '<button class="btn btn-default pull-right" data-target="#myModal" data-toggle="modal">Reserve</button>' +
+    '</div>');
+ }
+
+</script>
 
 
 
