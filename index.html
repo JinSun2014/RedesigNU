@@ -12,6 +12,9 @@
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="./semantic/packaged/css/semantic.css">
   <!--link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"-->
+  <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+
+
 
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
@@ -37,9 +40,16 @@
 	.inverted.search.icon {
 		background-color: 
 	}
+	body{
+		background-image:url("./4.jpg");
+		/*background-size:cover;*/
+		font-family: 'Arvo', 'serif';
+		background-repeat:no-repeat;
+		background-attachment: fixed;
+	}
 </style>
 
-<div class="ui pointing menu">
+<div class="ui pointing menu page dimmer>
 	<a class="item">
 		<i class="home icon"></i> Home
 	</a>
@@ -53,8 +63,12 @@
 			<i class="cart icon"></i>
 			<span class = "numbers">Shopping Cart
 			</span>
-			<div class="menu">
-				<table class="ui table segment">
+			<div class="menu" id="shoppingCart">
+				<div class="ui green button" id="enroll">Enroll
+				</div>
+			</div>
+			
+				<!--table class="ui table segment">
   <thead>
     <tr><th>Name</th>
     <th>Status</th>
@@ -77,7 +91,7 @@
       <td>None</td>
     </tr>
   </tbody>
-</table>
+</table-->
 			</div>
 		</div>
 		<div class = "item">
@@ -89,7 +103,7 @@
 	COURSE SEARCH
 </div>
 
-
+<div style="opacity:0.8;">
 <div class="ui icon input">
 	<input type="text" placeholder="Search..." id = "search">
 	<i class="inverted search icon" onclick = getCourses() ></i>
@@ -111,13 +125,13 @@
 					<div class="item">2013 Fall</div>
 				</div>
 			</div>
-			<div class = "ui pionting red left label" style = "float:left;margin-left:10px;margin-top:7px;"> Subject: </div>
+			<div class = "ui pionting blue left label" style = "float:left;margin-left:10px;margin-top:7px;"> Subject: </div>
 
 			<div class="ui input" style="float:left;">
 				
 				<input type="text" placeholder="Search..." id = "subject">
 			</div>
-			<div class = "ui pionting red left label" style = "float:left;margin-left:5px;margin-top:7px;"> Instructor: </div>
+			<div class = "ui pionting blue left label" style = "float:left;margin-left:5px;margin-top:7px;"> Instructor: </div>
 
 			<div class="ui input" style="float:left;">
 				
@@ -133,6 +147,7 @@
 		
 		</div>
 	</div>
+</div>
 
 
 
