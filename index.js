@@ -139,7 +139,6 @@ function getCourses() {
  		}
 	});
 }
-var num=0
 function addCart(courseList,cnum){
 	//$('.menu').splice(-1, 1);
 	console.log(cnum)
@@ -150,17 +149,26 @@ function addCart(courseList,cnum){
 	}
 	$(cnumADD).html('Added');
 	$(cnumADD).attr('class', 'ui hover button');
-	num+=1
-	$('.menu').append('<div class="ui attached segment" id='+num+'><p>' + courseList + '<i class="remove icon" onclick=rmCourse(' + num + ') ></i></p></div>');
+	$('.menu').append('<div class="ui attached segment" id='+cnum+'><p>' + courseList + '<i class="remove icon" onclick=rmCourse(' + cnum + ') ></i></p></div>');
 	$('.dropdown').dropdown();
 }
 function rmCourse(num){
 	//console.log('hello')
 	var rmnum='#'+ num
 	$(rmnum).remove();
-	$(".ui.simple.dropdown.item").dropdown('show');
+	cnumADD='#addBtn'+num;
+	$(cnumADD).html('ADD CART')
+	$(cnumADD).attr('class', 'ui hover blue button');
+	//$(".ui.simple.dropdown.item").dropdown('show');
+	//$(".ui.simple.dropdown.item").style.display='block';
 }
 
 $('#enroll').click(function(){
 	$('.dimmer').dimmer('toggle');
+});
+
+$('.dropdown').on({
+	"shown.bs.dropdown": function() {$(this).data('closable', false);}
+	// "click": function() {$(this).data('closable',true);}
+	// "hide.bs.dropdown": function() {return $(this).data('closable');}
 });
