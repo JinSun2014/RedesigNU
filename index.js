@@ -223,6 +223,7 @@ function rmCourse(num){
 	cnumADD='#addBtn'+num;
 	$(cnumADD).html('ADD CART')
 	$(cnumADD).attr('class', 'ui hover blue button');
+	$('.dropdown').dropdown();
 	//$(".ui.simple.dropdown.item").dropdown('show');
 	//$(".ui.simple.dropdown.item").style.display='block';
 }
