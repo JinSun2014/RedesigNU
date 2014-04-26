@@ -43,7 +43,6 @@ function searchCoursesById(data, id, callback) {
 	var i
 	for(i=0; i<data.length; i++){
 		if(parseInt(data[i]['catalog_num']) === parseInt(id)){
-			alert("win")
 			course_list.push(data[i])
 		}
 	}
