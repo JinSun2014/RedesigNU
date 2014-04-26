@@ -66,39 +66,15 @@
 			<i class="cart icon"></i>
 			<span class = "numbers">Shopping Cart
 			</span>
-			<div class="menu" id="shoppingCart" style="float:right">
+			<div class="menu" id="shoppingCart" style="float:left">
 				<div class="ui green button" id="enroll">Enroll
 				</div>
 			</div>
 			
-				<!--table class="ui table segment">
-  <thead>
-    <tr><th>Name</th>
-    <th>Status</th>
-    <th>Notes</th>
-  </tr></thead>
-  <tbody>
-    <tr>
-      <td>John</td>
-      <td>Approved</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>Jamie</td>
-      <td>Approved</td>
-      <td>Requires call</td>
-    </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Denied</td>
-      <td>None</td>
-    </tr>
-  </tbody>
-</table-->
 			</div>
-		</div>
-		<div class = "item">
+				<span class = "item">
 			logout
+		</span>
 		</div>
 	</div>
 </div>
@@ -115,18 +91,18 @@
 <div style="opacity:0.8;">
 <div class="ui icon input">
 	<input type="text" placeholder="Search..." id = "search">
-	<i class="inverted search icon" onclick = getCourses() ></i>
+	<i class="inverted search icon" onclick = getCourses() style="width:80px;">Search</i>
 </div>
 <br>
 
 </div>
 <div class="ui accordion" style = "margin-left:300px;width:780px;">
-	<div class="title" style="height:15px;background-color:#F39823;opacity:0.9">
+	<div class="title" style="height:15px;background-color:#42CE73;" >
 		<i class="dropdown icon" ></i>
-		<span style="color:#260E02;">Advanced Search</span>	</div>
-		<div class="hidden content" style="height:40px;background-color:#ddc3c5;opacity:0.9">
+		<span style="color:white;"><strong>Advanced Search</strong></span>	</div>
+		<div class="hidden content" style="height:40px;background-color:#FFCE10;opacity:0.9;">
 			<div class="ui fluid selection dropdown" style="width:20%;float:left;height:25%;margin-top:5px;";>
-				<div class="text" id = "term" style="vertical-align:center;">Term</div>
+				<div class="text" id = "term" style="vertical-align:center;"><strong>Term</strong></div>
 				<i class="dropdown icon"></i>
 				<div class="menu">
 					<div class="item">2014 Spring</div>
@@ -134,13 +110,13 @@
 					<div class="item">2013 Fall</div>
 				</div>
 			</div>
-			<div class = "ui pionting blue left label" style = "float:left;margin-left:13px;margin-top:7px;height:33px;"> Subject : </div>
+			<div class = "ui pionting green left label" style = "float:left;margin-left:13px;margin-top:7px;height:33px; font-color:#260E02;"> <div style="color:black;"><strong>Subject : </strong></div></div>
 
 			<div class="ui input" style="float:left;width:15%;margin-top:6px;">
 				
 				<input type="text" placeholder="EECS" id = "subject" style="height:33px;">
 			</div>
-			<div class = "ui pionting blue left label" style = "float:left;margin-left:10px;margin-top:7px;height:33px;"> Instructor : </div>
+			<div class = "ui pionting green left label" style = "float:left;margin-left:10px;margin-top:7px;height:33px; color:#260E02;width:15%;"> <div style="color:black;"><strong>Instructor </strong></div></div>
 
 			<div class="ui input" style="float:left;margin-top:6px;">
 				
