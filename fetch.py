@@ -11,8 +11,10 @@ random_string = str(uuid.uuid4())
 # Note: DO NOT commit the private key to version control. Use
 # environment variables or files that you specifically exclude
 # from Git.
-pk = open('privatekey')
-private_key = pk.read()
+with open('privatekey') as f:
+    private_key = f.read()
+
+print private_key
 
 hash_val = hashlib.md5(public_key + current_time +\
                        random_string + private_key).hexdigest()
