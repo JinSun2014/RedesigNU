@@ -2,12 +2,15 @@
 $('document').ready(function(){
 	console.log('hi')
 	$('.ui.accordion').accordion();
-	$('input').keypress(function(e){
+	/*$('input').keypress(function(e){
 		$('#class_list').css({"display": "block"});
 		if (!$('input').val()){
 			$('#class_list').css({"display": "None"});
 		}
-	});
+	});*/
+	$('.dropdown')
+		.dropdown()
+	;
 });
 
 function searchCourses(data, search, callback) {
@@ -49,6 +52,7 @@ function getDesc(course) {
 
 function showCourses(course_list){
 	$("#course_list").html('')
+	$('#class_list').css({"display": "block"});
 	console.log(course_list[0])
 	var i;
 	for(i =0; i<course_list.length; i++){
@@ -71,8 +75,14 @@ function showCourses(course_list){
 function getCourses() {
 	var course_list;
 
-	var term = $("#term").val();
+	var term = $("#term").html();
 	console.log(term)
+	switch(term){
+		case "2014 Spring": term = 4540;break;
+		case "2014 Winter": term = 4530;break;
+		case "2013 Fall":   term = 4520;break;
+		default: break;
+	}
 	var subject = $("#subject").val();
 	console.log(subject)
 	var search = $("#search").val();
