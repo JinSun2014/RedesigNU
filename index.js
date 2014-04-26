@@ -78,10 +78,18 @@ function getCourses() {
 	var term = $("#term").html();
 	console.log(term)
 	switch(term){
-		case "2014 Spring": term = 4540;break;
-		case "2014 Winter": term = 4530;break;
-		case "2013 Fall":   term = 4520;break;
-		default: break;
+		case "2014 Spring":
+			term = 4540;
+			break;
+		case "2014 Winter":
+			term = 4530;
+			break;
+		case "2013 Fall":
+			term = 4520;
+			break;
+		default:
+			term = 4540;
+			break;
 	}
 	var subject = $("#subject").val();
 	console.log(subject)
