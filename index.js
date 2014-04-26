@@ -2,12 +2,15 @@
 $('document').ready(function(){
 	console.log('hi')
 	$('.ui.accordion').accordion();
-	$('input').keypress(function(e){
+	/*$('input').keypress(function(e){
 		$('#class_list').css({"display": "block"});
 		if (!$('input').val()){
 			$('#class_list').css({"display": "None"});
 		}
-	});
+	});*/
+	$('.dropdown')
+		.dropdown()
+	;
 });
 
 function searchCourses(data, search, callback) {
@@ -49,10 +52,11 @@ function getDesc(course) {
 
 function showCourses(course_list){
 	$("#course_list").html('')
+	$('#class_list').css({"display": "block"});
 	console.log(course_list[0])
 	var i;
 	for(i =0; i<course_list.length; i++){
-		$("#course_list").append("<div class='title'><i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div><div class='hidden content'><div><div class='ui ribbon label'>Course Number</div><p>" + course_list[i]['catalog_num'] + "</p><div class='ui ribbon label'>Instructor</div><p>" + course_list[i]['instructor']['name'] + "</p><div class='ui hover green button' style='float:right; margin-bottom:10px;''>Add Cart</div></div></div>")
+		$("#course_list").append("<div class='title'><i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div><div class='hidden content' style = 'height:240px;'><div><div class='ui ribbon label'>Course Number</div><p>" + course_list[i]['catalog_num'] + "</p><div class='ui ribbon label'>Instructor</div><p>" + course_list[i]['instructor']['name'] + "</p><div class='ui hover green button' style='float:right; margin-bottom:10px;''>Add Cart</div></div></div>")
 	}
 	$('.ui.accordion').accordion();
 }
@@ -60,8 +64,14 @@ function showCourses(course_list){
 function getCourses() {
 	var course_list;
 
-	var term = $("#term").val();
+	var term = $("#term").html();
 	console.log(term)
+	switch(term){
+		case "2014 Spring": term = 4540;break;
+		case "2014 Winter": term = 4530;break;
+		case "2013 Fall":   term = 4520;break;
+		default: break;
+	}
 	var subject = $("#subject").val();
 	console.log(subject)
 	var search = $("#search").val();
