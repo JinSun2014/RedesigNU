@@ -28,7 +28,7 @@
 
 <style>
 	.ui.icon.input {
-		margin-top: 50px;
+		margin-top: 10px;
 		margin-left: 300px;
 	}
 	.ui.icon.input > input {
@@ -62,7 +62,7 @@
 		</div>
 	</div>
 </div>
-<div class = "ui huge header" style="margin-left:550px; margin-top:100px;">
+<div class = "ui huge header" style="margin-left:550px; margin-top:10px;">
 	COURSE SEARCH
 </div>
 <div class="ui icon input">
@@ -70,15 +70,25 @@
 	<i class="inverted search icon" ></i>
 </div>
 <br>
-<div class="ui move down reveal">
-  <a class="visible content" >
-  	Advanced Search
-  </a>
-  <a class="hidden content">
-  	sklad
-  </a>
+<div class="ui accordion" style = "margin-left:300px;width:780px;">
+	<div class="title">
+		<i class="dropdown icon" ></i>
+		Advanced Search	</div>
+	<div class="hidden content">
+		<p></p>
+	</div>
 </div>
 
+
+
+
+<script>
+$('document').ready(function(){
+	$('.ui.accordion').accordion();	
+
+})
+
+</script>
 
 
 
