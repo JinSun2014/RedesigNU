@@ -145,6 +145,9 @@ function addCart(courseList,cnum){
 	console.log(cnum)
 	
 	cnumADD='#addBtn'+cnum;
+	if ($(cnumADD).html() == 'Added'){
+		return;
+	}
 	$(cnumADD).html('Added');
 	$(cnumADD).attr('class', 'ui hover button');
 	num+=1
@@ -155,6 +158,7 @@ function rmCourse(num){
 	//console.log('hello')
 	var rmnum='#'+ num
 	$(rmnum).remove();
+	$("#SCart").dropdown('show');
 }
 
 $('#enroll').click(function(){
