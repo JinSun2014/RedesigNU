@@ -19,6 +19,12 @@ $('document').ready(function(){
 		$('.ui.dimmer').dimmer('show');
 	});
 
+	$('#search').keypress(function(e){
+		if (e.which == 13){
+			getCourses();
+		}
+	});
+
 });
 
 function searchCoursesByName(data, search, callback) {
@@ -110,7 +116,7 @@ function showCourses(course_list){
 		$("#course_list").append(
 			"<div class='title'>	\
 				<i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div>	\
-				<div class='hidden content' style='height:260px'>	\
+				<div class='hidden content' style='height:260px;background-color:#11011C;color:white;opacity:0.9;'>	\
 				<div>	\
 					<div class='ui orange ribbon label'>Instructor</div>	\
 					<p>" + course_list[i]['instructor']['name'] + "</p>	\
@@ -279,3 +285,4 @@ $('.dropdown').on({
 	// "click": function() {$(this).data('closable',true);}
 	// "hide.bs.dropdown": function() {return $(this).data('closable');}
 });
+
