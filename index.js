@@ -30,6 +30,21 @@ function searchCoursesByName(data, search, callback) {
 		callback(course_list)
 	}
 }
+function searchCoursesById(data, id, callback) {
+	var course_list=[]
+	var i
+	for(i=0; i<data.length; i++){
+		if(parseInt(data[i]['catalog_num']) === parseInt(id)){
+			alert("win")
+			course_list.push(data[i])
+		}
+	}
+	if(course_list.length === 0) {
+		alert("no courses found")
+	} else {
+		callback(course_list)
+	}
+}
 
 function searchCoursesByInstructor(data, instructor, search, callback) {
 	var course_list=[]
@@ -104,6 +119,13 @@ function showCourses(course_list){
 	$('.ui.accordion').accordion();
 }
 
+function getSubject(search) {
+	var i=0
+	//alert(search.replace(/[^\d]/g,''))
+	//alert(search.replace(/[^a-zA-Z]/g,''))
+	return search.replace(/[^a-zA-Z]/g,'')
+}
+
 function getCourses() {
 	var course_list;
 
@@ -127,6 +149,17 @@ function getCourses() {
 	console.log(subject)
 	var instructor = $("#instructor").val();
 	var search = $("#search").val();
+	var search_by_id = false;
+
+	if($.isEmptyObject(subject)){
+		search_by_id =true;
+		subject = getSubject(search)
+		console.log(subject)
+		if(subject == null){
+			alert("Need more information!")
+			return
+		}
+	}
 	if(! $.isEmptyObject(instructor)){
 		url = "http://vazzak2.ci.northwestern.edu/instructors/?subject=" + subject;
 	} else {
@@ -141,7 +174,12 @@ function getCourses() {
  		success: function(data) {
  			if($.isEmptyObject(instructor)){
  				console.log(search)
- 				searchCoursesByName(data, search, showCourses)
+ 				if(search_by_id === false){
+ 					searchCoursesByName(data, search, showCourses)
+ 				} else {
+ 					id = search.replace(/[^\d]/g,'')
+ 					searchCoursesById(data, id, showCourses)
+ 				}
  			} else {
  				searchCoursesByInstructor(data, instructor, search, showCourses)
  			}
