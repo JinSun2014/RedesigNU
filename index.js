@@ -13,12 +13,12 @@ $('document').ready(function(){
 	;
 });
 
-function searchCourses(data, search, callback) {
+function searchCoursesByName(data, search, callback) {
 	var course_list=[]
 	console.log(data[1])
 	var i
 	for(i=0; i<data.length; i++){
-		if( data[i]['title'].search(new RegExp(search, "i")) != -1 ){
+		if(data[i]['title'].search(new RegExp(search, "i")) != -1 ){
 			console.log(data[i]['title'])
 			course_list.push(data[i]);
 		}
@@ -27,6 +27,25 @@ function searchCourses(data, search, callback) {
 		alert("no courses found")
 	} else {
 		console.log(course_list)
+		callback(course_list)
+	}
+}
+
+function searchCoursesByInstructor(data, instructor, search, callback) {
+	var course_list=[]
+	console.log(data[1])
+	var i
+	for(i=0; i<data.length; i++){
+		if(data[i]['name'].search(new RegExp(instructor, "i")) != -1 ){
+			console.log(data[i]['name'])
+			course_list.push(data[i]);
+		}
+	}
+	if(course_list.length === 0) {
+		alert("no courses found")
+	} else {
+		console.log(course_list)
+		console.log(callback)
 		callback(course_list)
 	}
 }
@@ -93,9 +112,13 @@ function getCourses() {
 	}
 	var subject = $("#subject").val();
 	console.log(subject)
+	var instructor = $("#instructor").val();
 	var search = $("#search").val();
-
-	var url = "http://vazzak2.ci.northwestern.edu/courses/?term=" + term + "&subject=" + subject;
+	if(! $.isEmptyObject(instructor)){
+		url = "http://vazzak2.ci.northwestern.edu/instructors/?subject=" + subject;
+	} else {
+		url = "http://vazzak2.ci.northwestern.edu/courses/?term=" + term + "&subject=" + subject;
+	}
 	console.log(url);
 	$.ajax({
 		type: 'GET',
@@ -103,7 +126,12 @@ function getCourses() {
  		datatype: 'jsonp',
  		async: false,
  		success: function(data) {
- 			searchCourses(data, search, showCourses)
+ 			if($.isEmptyObject(instructor)){
+ 				console.log(search)
+ 				searchCoursesByName(data, search, showCourses)
+ 			} else {
+ 				searchCoursesByInstructor(data, instructor, search, showCourses)
+ 			}
  		},
  		error: function(errorData) {
  			alert("Error getting data!")
