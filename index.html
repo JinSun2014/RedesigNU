@@ -50,11 +50,34 @@
 	<div class="right menu">
 		<div class="ui simple dropdown item">
 				Hello,Peicong
-			<i class="cart icon"></i>Shopping Cart
+			<i class="cart icon"></i>
+			<span class = "numbers">Shopping Cart
+			</span>
 			<div class="menu">
-				<a class="item">English</a>
-				<a class="item">Russian</a>
-				<a class="item">Spanish</a>
+				<table class="ui table segment">
+  <thead>
+    <tr><th>Name</th>
+    <th>Status</th>
+    <th>Notes</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>John</td>
+      <td>Approved</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Jamie</td>
+      <td>Approved</td>
+      <td>Requires call</td>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Denied</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
 			</div>
 		</div>
 		<div class = "item">
@@ -85,8 +108,20 @@
 <script>
 $('document').ready(function(){
 	$('.ui.accordion').accordion();	
+	$('.numbers').append('shopping cart 2');
 
 })
+	$('.numbers').click(){
+		open.
+	}
+ function shopcart(){
+ 	$(".menu").append('<div class="list-group-item room-row container-fluid" id="' + spaceID + '">' +
+    '<span class="col-sm-2 room-row-labels">Name: <span class="room-row-content">' + name + '</span> </span>' + 
+    '<span class="col-sm-2 room-row-labels">Size: <span class="room-row-content">' + maxCapacity + '</span> </span>' + 
+    '<span class="col-sm-2 room-row-labels">Building: <span class="room-row-content">' + location + '</span> </span>' +
+    '<button class="btn btn-default pull-right" data-target="#myModal" data-toggle="modal">Reserve</button>' +
+    '</div>');
+ }
 
 </script>
 
