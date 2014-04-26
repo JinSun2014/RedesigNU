@@ -52,7 +52,18 @@ function showCourses(course_list){
 	console.log(course_list[0])
 	var i;
 	for(i =0; i<course_list.length; i++){
-		$("#course_list").append("<div class='title'><i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div><div class='hidden content'><div><div class='ui ribbon label'>Course Number</div><p>" + course_list[i]['catalog_num'] + "</p><div class='ui ribbon label'>Instructor</div><p>" + course_list[i]['instructor']['name'] + "</p><div class='ui hover green button' style='float:right; margin-bottom:10px;''>Add Cart</div></div></div>")
+		$("#course_list").append(
+			"<div class='title'>	\
+				<i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div>	\
+				<div class='hidden content'>	\
+				<div>	\
+					<div class='ui ribbon label'>Course Number</div>	\
+					<p>" + course_list[i]['catalog_num'] + "</p>	\
+					<div class='ui ribbon label'>Instructor</div>	\
+					<p>" + course_list[i]['instructor']['name'] + "</p>	\
+					<div class='ui hover green button' style='float:right; margin-bottom:10px;''>Add Cart</div>	\
+				</div>	\
+			</div>")
 	}
 	$('.ui.accordion').accordion();
 }
