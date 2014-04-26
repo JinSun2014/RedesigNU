@@ -84,8 +84,8 @@ function showCourses(course_list){
 					<p>" + course_list[i]['catalog_num'] + "</p>	\
 					<div class='ui orange ribbon label'>Instructor</div>	\
 					<p>" + course_list[i]['instructor']['name'] + "</p>	\
-					<div class='ui hover blue button' id='addBtn' style='float:right; margin-bottom:10px;'	\
-					onclick='addCart(\"" + getName(course_list[i]) + "\")'>Add Cart</div>	\
+					<div class='ui hover blue button' id='addBtn"+ i + "'style='float:right; margin-bottom:10px;'	\
+					onclick='addCart(\"" + getName(course_list[i]) +"\"," + i +")'>Add Cart</div>	\
 				</div>	\
 			</div>")
 	}
@@ -140,16 +140,19 @@ function getCourses() {
 	});
 }
 var num=0
-function addCart(courseList){
+function addCart(courseList,cnum){
 	//$('.menu').splice(-1, 1);
-	$(this).attr('class', 'ui hover button');
-	//$('.ui.hover.green.button').html('Added');
+	console.log(cnum)
+	
+	cnumADD='#addBtn'+cnum;
+	$(cnumADD).html('Added');
+	$(cnumADD).attr('class', 'ui hover button');
 	num+=1
 	$('.menu').append('<div class="ui attached segment" id='+num+'><p>' + courseList + '<i class="remove icon" onclick=rmCourse(' + num + ') ></i></p></div>');
 	$('.dropdown').dropdown();
 }
 function rmCourse(num){
-	console.log('hello')
+	//console.log('hello')
 	var rmnum='#'+ num
 	$(rmnum).remove();
 }
