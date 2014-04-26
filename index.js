@@ -57,7 +57,17 @@ function getName(course) {
 		return course['title']
 	}
 }
+function getSchedule(course) {
+	var time="";
+	console.log(course['meeting_days'])
+	time += course['meeting_days'];
+	time += ';';
+	time += (course['start_time'] + ';' + course['end_time'])
+	console.log(time)
+	return time
+}
 
+/*
 function getDesc(course) {
 	if (course['coursedesc_set'].length === 0){
 		return "No Description!"
@@ -68,7 +78,7 @@ function getDesc(course) {
 		result.append(course['coursedesc_set'][i][0])
 	}
 }
-
+*/
 function showCourses(course_list){
 	$("#course_list").html('')
 	$('#class_list').css({"display": "block"});
@@ -78,7 +88,7 @@ function showCourses(course_list){
 		$("#course_list").append(
 			"<div class='title'>	\
 				<i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div>	\
-				<div class='hidden content'>	\
+				<div class='hidden content' style='height:260px'>	\
 				<div>	\
 					<div class='ui orange ribbon label'>Instructor</div>	\
 					<p>" + course_list[i]['instructor']['name'] + "</p>	\
@@ -87,7 +97,7 @@ function showCourses(course_list){
 					<div class='ui orange ribbon label'>Course Schedule</div>	\
 					<p>" + course_list[i]['meeting_days'] + ": " + course_list[i]['start_time'] + "-" + course_list[i]['end_time'] + "</p>	\
 					<div class='ui hover blue button' id='addBtn"+ i + "'style='float:right;'	\
-					onclick='addCart(\"" + getName(course_list[i]) +"\"," + i +")'>Add Cart</div>	\
+					onclick='addCart(\"" + getName(course_list[i]) +"\"," + i + ",\"" + getSchedule(course_list[i]) + "\")'>Add Cart</div>	\
 				</div>	\
 			</div>")
 	}
@@ -141,17 +151,69 @@ function getCourses() {
  		}
 	});
 }
-function addCart(courseList,cnum){
+
+var cart_list=[];
+
+function conflict_with(sch1, sch2) {
+	start1 = parseInt(sch1[1].split(':')[0]) + parseInt(sch1[1].split(':')[1]) / 60
+	end1 = parseInt(sch1[2].split(':')[0]) + parseInt(sch1[2].split(':')[1]) / 60
+	start2 = parseInt(sch2[1].split(':')[0]) + parseInt(sch2[1].split(':')[1]) / 60
+	end2 = parseInt(sch2[2].split(':')[0]) + parseInt(sch2[2].split(':')[1]) / 60
+	if(start1 > end2 || start2 > end1){
+		return false
+	}
+	date1 = []
+	date2 = []
+	var i,j;
+	for(i=0; i<sch1[0].length; i=i+2){
+		date1.push(sch1[0].substring(i,i+2))
+	}
+	for(i=0; i<sch1[0].length; i=i+2){
+		date2.push(sch2[0].substring(i,i+2))
+	}
+	for(i=0; i<date1.length; i++){
+		for(j=0; j<date2.length;j++){
+			if(date1[i] === date2[j]){
+				return true
+			}
+		}
+	}
+	return false
+}
+
+function check_conflict(schedule) {
+	var i;
+	for (i=0; i<cart_list.length; i++){
+		if(conflict_with(cart_list[i],schedule) === true){
+			return cart_list[i][3]
+		}
+	}
+	return null
+}
+
+function addCart(courseName, cnum, courseTime){
 	//$('.menu').splice(-1, 1);
+	console.log(courseName)
 	console.log(cnum)
-	
+	var schedule = courseTime.split(";")
+	schedule.push(courseName)
+	console.log(schedule)
+
+	var conflict_course = check_conflict(schedule)
+	if(conflict_course != null){
+		alert("Conflict with " + conflict_course)
+		return
+	}
+	cart_list.push(schedule)
+	//console.log(cart_list)
+
 	cnumADD='#addBtn'+cnum;
 	if ($(cnumADD).html() == 'Added'){
 		return;
 	}
 	$(cnumADD).html('Added');
 	$(cnumADD).attr('class', 'ui hover button');
-	$('.menu').append('<div class="ui attached segment" id='+cnum+'><p>' + courseList + '<i class="remove icon" onclick=rmCourse(' + cnum + ') ></i></p></div>');
+	$('.menu').append('<div class="ui attached segment" id='+cnum+'><p>' + courseName + '<i class="remove icon" onclick=rmCourse(' + cnum + ') ></i></p></div>');
 	$('.dropdown').dropdown();
 }
 function rmCourse(num){
