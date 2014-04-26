@@ -1,0 +1,71 @@
+<html>
+
+<body>
+	<form>
+		Term: <input type="text" id="term"><br>
+		Subject: <input type="text" id="subject"><br>
+		Search: <input type="text" id="search">
+	</form>
+	<button onclick = getCourses()>submit</button>
+	<div id="course_list"></div>
+
+</body>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script>
+
+function searchCourses(data, search, callback) {
+	var course_list=[]
+	console.log(data[1])
+	var i
+	for(i=0; i<data.length; i++){
+		if( data[i]['title'].search(search) != -1 ){
+			console.log(data[i]['title'])
+			course_list.push(data[i]);
+		}
+	}
+	if(course_list.length === 0) {
+		alert("no courses found")
+	} else {
+		console.log(course_list)
+		callback(course_list)
+	}
+}
+
+function showCourses(course_list){
+	// $("#course_list").clear()
+	console.log(course_list[0])
+	var i;
+	for(i =0; i<course_list.length; i++){
+		$("#course_list").append("<li>"+ course_list[i]['title'] +"</li>")
+	}
+}
+
+function getCourses() {
+	var course_list;
+
+	var term = $("#term").val();
+	console.log(term)
+	var subject = $("#subject").val();
+	console.log(subject)
+	var search = $("#search").val();
+
+	var url = "http://vazzak2.ci.northwestern.edu/courses/?term=" + term + "&subject=" + subject;
+	console.log(url);
+	$.ajax({
+		type: 'GET',
+ 		url: url,
+ 		datatype: 'jsonp',
+ 		async: false,
+ 		success: function(data) {
+ 			searchCourses(data, search, showCourses)
+ 		},
+ 		error: function(errorData) {
+ 			alert("Error getting data!")
+ 		}
+	});
+}
+
+</script>
+</html>
