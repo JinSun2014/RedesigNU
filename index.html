@@ -17,6 +17,8 @@
 
 
 
+
+
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.js"></script>
   <script src="./semantic/packaged/javascript/semantic.js"></script>
@@ -41,15 +43,15 @@
 		background-color: 
 	}
 	body{
-		background-image:url("./4.jpg");
-		/*background-size:cover;*/
+		background-image:url("./5.jpg");
+		background-size:cover;
 		font-family: 'Arvo', 'serif';
 		background-repeat:no-repeat;
 		background-attachment: fixed;
 	}
 </style>
 
-<div class="ui pointing menu">
+<div class="ui pointing menu" style="opacity:0.9;">
 	<a class="item">
 		<i class="home icon"></i> Home
 	</a>
@@ -58,12 +60,12 @@
 	</a>
 	
 	<div class="right menu">
-		<div class="ui simple dropdown item" id="SCart">
+		<div class="ui simple dropdown item" id="SCart" >
 				Hello,Peicong
 			<i class="cart icon"></i>
 			<span class = "numbers">Shopping Cart
 			</span>
-			<div class="menu" id="shoppingCart">
+			<div class="menu" id="shoppingCart" style="float:right">
 				<div class="ui green button" id="enroll">Enroll
 				</div>
 			</div>
@@ -99,7 +101,7 @@
 		</div>
 	</div>
 </div>
-<div class = "ui huge header" style="margin-left:550px;">
+<div class = "ui huge header" style="margin-left:550px;color:white;">
 	COURSE SEARCH
 </div>
 
@@ -112,12 +114,12 @@
 
 </div>
 <div class="ui accordion" style = "margin-left:300px;width:780px;">
-	<div class="title">
+	<div class="title" style="height:15px;background-color:#F39823;opacity:0.9">
 		<i class="dropdown icon" ></i>
-		Advanced Search	</div>
-		<div class="hidden content" style="height:40px;">
-			<div class="ui fluid selection dropdown" style="width:10%;float:left;">
-				<div class="text" id = "term">Term</div>
+		<span style="color:#260E02;">Advanced Search</span>	</div>
+		<div class="hidden content" style="height:40px;background-color:#ddc3c5;opacity:0.9">
+			<div class="ui fluid selection dropdown" style="width:20%;float:left;height:25%;margin-top:5px;";>
+				<div class="text" id = "term" style="vertical-align:center;">Term</div>
 				<i class="dropdown icon"></i>
 				<div class="menu">
 					<div class="item">2014 Spring</div>
@@ -125,17 +127,17 @@
 					<div class="item">2013 Fall</div>
 				</div>
 			</div>
-			<div class = "ui pionting blue left label" style = "float:left;margin-left:10px;margin-top:7px;"> Subject: </div>
+			<div class = "ui pionting blue left label" style = "float:left;margin-left:13px;margin-top:7px;height:33px;"> Subject : </div>
 
-			<div class="ui input" style="float:left;">
+			<div class="ui input" style="float:left;width:15%;margin-top:6px;">
 				
-				<input type="text" placeholder="Search..." id = "subject">
+				<input type="text" placeholder="EECS" id = "subject" style="height:33px;">
 			</div>
-			<div class = "ui pionting blue left label" style = "float:left;margin-left:5px;margin-top:7px;"> Instructor: </div>
+			<div class = "ui pionting blue left label" style = "float:left;margin-left:10px;margin-top:7px;height:33px;"> Instructor : </div>
 
-			<div class="ui input" style="float:left;">
+			<div class="ui input" style="float:left;margin-top:6px;">
 				
-				<input type="text" placeholder="Search..." id = "instructor">
+				<input type="text" placeholder="Instructor" id = "instructor"style="height:35px;">
 			</div>
 
 			
