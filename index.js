@@ -80,11 +80,11 @@ function showCourses(course_list){
 				<i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div>	\
 				<div class='hidden content'>	\
 				<div>	\
-					<div class='ui orange ribbon label' style='background-color:#F10256;'>Course Number</div>	\
+					<div class='ui orange ribbon label'>Course Number</div>	\
 					<p>" + course_list[i]['catalog_num'] + "</p>	\
 					<div class='ui orange ribbon label'>Instructor</div>	\
 					<p>" + course_list[i]['instructor']['name'] + "</p>	\
-					<div class='ui hover blue button' id='addBtn"+ i + "'style='float:right; margin-bottom:10px;'	\
+					<div class='ui hover blue button' id='addBtn"+ i + "'style='float:right;'	\
 					onclick='addCart(\"" + getName(course_list[i]) +"\"," + i +")'>Add Cart</div>	\
 				</div>	\
 			</div>")
@@ -158,7 +158,7 @@ function rmCourse(num){
 	//console.log('hello')
 	var rmnum='#'+ num
 	$(rmnum).remove();
-	$("#SCart").dropdown('show');
+	$(".ui.simple.dropdown.item").dropdown('show');
 }
 
 $('#enroll').click(function(){
