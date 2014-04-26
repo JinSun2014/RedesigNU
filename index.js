@@ -80,10 +80,12 @@ function showCourses(course_list){
 				<i class='dropdown icon'></i>"+ getName(course_list[i]) + "</div>	\
 				<div class='hidden content'>	\
 				<div>	\
-					<div class='ui orange ribbon label'>Course Number</div>	\
-					<p>" + course_list[i]['catalog_num'] + "</p>	\
 					<div class='ui orange ribbon label'>Instructor</div>	\
 					<p>" + course_list[i]['instructor']['name'] + "</p>	\
+					<div class='ui orange ribbon label'>Course Number</div>	\
+					<p>" + course_list[i]['catalog_num'] + "</p>	\
+					<div class='ui orange ribbon label'>Course Schedule</div>	\
+					<p>" + course_list[i]['meeting_days'] + ": " + course_list[i]['start_time'] + "-" + course_list[i]['end_time'] + "</p>	\
 					<div class='ui hover blue button' id='addBtn"+ i + "'style='float:right;'	\
 					onclick='addCart(\"" + getName(course_list[i]) +"\"," + i +")'>Add Cart</div>	\
 				</div>	\
