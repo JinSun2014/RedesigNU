@@ -11,6 +11,14 @@ $('document').ready(function(){
 	$('.dropdown')
 		.dropdown()
 	;
+
+	//$('.ui.dimmable').dimmer('toggle');
+	$('#enroll').click(function(){
+		//$('.ui.dimmable').dimmer('show');
+		//$('.ui.dimmer').dimmer('show');
+		$('.ui.dimmer').dimmer('show');
+	});
+
 });
 
 function searchCoursesByName(data, search, callback) {
@@ -266,9 +274,6 @@ function rmCourse(num){
 	//$(".ui.simple.dropdown.item").style.display='block';
 }
 
-$('#enroll').click(function(){
-	$('.dimmer').dimmer('toggle');
-});
 
 $('.dropdown').on({
 	"shown.bs.dropdown": function() {$(this).data('closable', false);}
